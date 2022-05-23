@@ -1,1 +1,64 @@
-
+#include <iostream>
+#include <ctime>
+#include <string>
+#include <vector>
+#include <climits>
+ 
+using namespace std;
+ 
+const int a_size = 10;
+ 
+void selection_sort(int a[], const int size) {
+	for (int i = 0; i < size; i++) {
+		int a_min = INT_MAX;
+		int index_min=0;
+		for (int j = i; j < size; j++) {
+			if (a[j] < a_min) {
+				a_min = a[j];
+				index_min = j;
+			}
+		}
+		swap(a[i], a[index_min]);
+	}
+	return;
+}
+ 
+void bubble_sort(int a[], const int size) {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size - 1; j++) {
+			if (a[j] > a[j + 1]) {
+				swap(a[j], a[j + 1]);
+			}
+		}
+	}
+	return;
+}
+ 
+void insertion_sort(int a[], const int size) {
+ 
+	for (int i = 1; i < size; i++) {
+		int x = a[i];
+		int j = i;
+		while (j > 0 && a[j - 1] > x) {
+			a[j] = a[j - 1];
+			j = j - 1;
+		}
+		a[j] = x;
+	}
+ 
+ 
+	return;
+}
+ 
+int main(){
+    cout <<"введите массив через enter" <<"\n";
+	int a[a_size];
+	for (int i = 0; i < a_size; i++) {
+		cin >> a[i];
+	}
+	insertion_sort(a, a_size);
+	for (int i = 0; i < a_size; i++) {
+		cout << a[i] << ' ';
+	}
+	return 0;
+}
